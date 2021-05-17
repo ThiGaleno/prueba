@@ -21,7 +21,7 @@ class CreateOrderItemsTable extends Migration
             $table->foreign('order_id')->references('id')->on('orders');
             $table->integer('amount');
             $table->decimal('unit_price', 10,2);
-            $table->decimal('discount', 10,2);
+            $table->decimal('discount_product', 10,2);
             $table->timestamps();
         });
     }
