@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('index', compact('products'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $order = Order::find(1);
+        dd($order->orderItens()->createMany());
+        $products = array();
+        foreach($request->products as $key => $value){
+            array_push($products, ['product' => $value, 'amount' => $request->amount[$key]]);
+        }
+        print_r($products);
+        $name = $request->user_name;
+
     }
 
     /**

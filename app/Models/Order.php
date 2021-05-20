@@ -11,4 +11,8 @@ class Order extends Model
     protected $fillable = ([
         'sub_total', 'total', 'discount_order'
     ]);
+
+    public function orderItens(){
+        return $this->hasMany(OrderItem::class);
+    }
 }
